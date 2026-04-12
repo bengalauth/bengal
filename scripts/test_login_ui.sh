@@ -8,7 +8,7 @@ RESOURCES_DIR="$(dirname "$BINARY")/Resources"
 
 echo "compiling present login UI..."
 swiftc ${BASEDIR}/../AuthorizationBundle/src/LoginUI.swift ${BASEDIR}/test_login_ui.swift \
-    ${BASEDIR}/../app_src/SettingsManager.swift \
+    ${BASEDIR}/../app/SettingsManager.swift \
     -framework OpenDirectory \
     -o "$BINARY"
 

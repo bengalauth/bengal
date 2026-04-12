@@ -4,7 +4,7 @@ SWIFT = swiftc
 APP_NAME = bengal.app
 APP_BUILDDIR= app_build
 APP_BUNDLE_DIR = $(APP_BUILDDIR)/$(APP_NAME)
-APP_SOURCES = app_src/*.swift
+APP_SOURCES = app/*.swift
 LOGIN_UI_BUILDDIR = AuthorizationBundle/build
 LOGIN_UI = AuthorizationBundle/build/BengalLogin.bundle
 FONTS = AuthorizationBundle/Resources/*.ttf
@@ -29,11 +29,11 @@ app: $(CLI)
 	@mkdir -p "$(APP_BUNDLE_DIR)/Contents/Resources/img"
 	@mkdir -p "$(APP_BUNDLE_DIR)/Contents/Resources/login/BengalLogin.bundle"
 	$(SWIFT) $(APP_SOURCES) -o "$(APP_BUNDLE_DIR)/Contents/MacOS/bengalwrapper"
-	@cp app_src/Info.plist "$(APP_BUNDLE_DIR)/Contents/"
+	@cp app/Info.plist "$(APP_BUNDLE_DIR)/Contents/"
 	@cp $(CLI) "$(APP_BUNDLE_DIR)/Contents/Resources/"
 	@cp $(FONTS) "$(APP_BUNDLE_DIR)/Contents/Resources/"
-	@cp -r app_src/img/* "$(APP_BUNDLE_DIR)/Contents/Resources/img/" 2>/dev/null || true
-	@cp app_src/img/logo.icns "$(APP_BUNDLE_DIR)/Contents/Resources/" 2>/dev/null || true
+	@cp -r app/img/* "$(APP_BUNDLE_DIR)/Contents/Resources/img/" 2>/dev/null || true
+	@cp app/img/logo.icns "$(APP_BUNDLE_DIR)/Contents/Resources/" 2>/dev/null || true
 	/bin/bash ./AuthorizationBundle/build.sh
 	@cp -rf AuthorizationBundle/build/BengalLogin.bundle/* "$(APP_BUNDLE_DIR)/Contents/Resources/login/BengalLogin.bundle/"
 	@echo "app built successfully: $(APP_BUNDLE_DIR)"
